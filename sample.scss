@@ -1,0 +1,72 @@
+@import 'scss/spacing';
+@import 'scss/output-margin';
+@import 'scss/rem';
+@import 'scss/trbl';
+@import 'scss/mq';
+@import 'scss/link-underline';
+
+
+/* output-margin */
+@include output-margin;
+
+
+/* rem:pxからremに変換 */
+.px2rem {
+	@include rem(font-size, 12px);
+	@include rem(margin, 12px 10px);
+}
+
+
+/* rem:remからpxに変換 */
+.rem2px {
+	@include rem(font-size, 1.4rem);
+	@include rem(margin, 1.4rem 1.2rem);
+}
+
+
+/* trbl */
+.trbl {
+	position: relative;
+}
+.trbl-img {
+	@include trbl;
+}
+.trbl-item {
+	@include trbl(100px, 100px);
+}
+
+
+/*mq*/
+.mq {
+	width: 100px;
+	height: 100px;
+	border: 1px solid gray;
+	@include min-screen(801px) {
+		/* デスクトップ用スタイル */
+		border-color: red;
+	};
+	@include screen(481px, 800px) {
+		/* タブレット用スタイル */
+		border-color: green;
+	};
+	@include max-screen(480px) {
+		/* スマートフォン用スタイル */
+		border-color: blue;
+	};
+}
+
+
+/*link-underline*/
+a {
+	@include link-underline(line-to-none);
+}
+.footer a {
+	@include link-underline(none);
+}
+.entry a {
+	@include link-underline(line);
+}
+.nav a {
+	@include link-underline(none-to-line);
+}
+

@@ -1,0 +1,65 @@
+// @mixin spacing
+// @description 余白調整用のclassを出力
+// @param $property {String} 'margin' or 'padding'
+// @param $direction {String} 方向 'top' or 'right' or 'bottom' or 'left'
+// @param $size {Number} 数値
+// @param $unit {String} 単位
+// @usage:
+// Tips: make classes
+// 1)
+//	@for $i from 0 through 10 {
+//		@include spacing(padding, top, $i);
+//		@include spacing(margin, bottom, -$i); // with negative margin/padding
+//	}
+//
+// 2)
+//	$i: 10;
+//	@while $i <= 100 {
+//		@include spacing(margin, right, $i);
+//		$i: $i + 10;
+//	}
+
+@mixin spacing($property, $direction, $size, $unit: px) {
+	$property      : $property - $direction;
+	$property-value: $size + $unit;
+	$class-prefix  : '';
+	$class-unit    : $unit;
+
+	$class-base-prefix        : m;
+	$class-base-prefix-padding: p;
+	$class-prefix-top         : t;
+	$class-prefix-right       : r;
+	$class-prefix-bottom      : b;
+	$class-prefix-left        : l;
+	$class-prefix-negative    : N;
+	$class-size-zero-pad      : '0';
+	$class-unit-for-px        : '';
+
+	@if $unit == px {
+		$class-unit: $class-unit-for-px;
+	}
+	@if $property == padding {
+		$class-base-prefix: $class-base-prefix-padding;
+	}
+	@if $direction == top {
+		$class-prefix: $class-base-prefix + $class-prefix-top;
+	}
+	@else if $direction == right {
+		$class-prefix: $class-base-prefix + $class-prefix-right;
+	}
+	@else if $direction == bottom {
+		$class-prefix: $class-base-prefix + $class-prefix-bottom;
+	}
+	@else if $direction == left {
+		$class-prefix: $class-base-prefix + $class-prefix-left;
+	}
+	@if ($size) < 0 {
+		$class-prefix: $class-prefix + $class-prefix-negative;
+		$size        : abs($size); // e.g. -10px -> 10px
+	}
+	@if ($size) < 10 {
+		$size: $class-size-zero-pad + abs($size);
+	}
+	// OUTPUT
+	.#{$class-prefix}#{$size}#{$class-unit} { #{$property}: $property-value !important; }
+}

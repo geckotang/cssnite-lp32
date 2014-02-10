@@ -1,0 +1,56 @@
+// @mixin link-underline
+// @description リンクの下線スタイルの調整
+// @param $type {String} 下線の種類（none, line, line-to-none, none-to-line）
+// @param $important {String or Boolean} 'important' or true
+
+@mixin link-underline($type, $important: false) {
+	@if $important == 'important' or $important == true {
+		$important: ' !important';
+	}
+	@else {
+		$important: '';
+	}
+
+	// :link,:visitedは下線あり、それ以外はなし
+	@if $type == line-to-none {
+		&:link,
+		&:visited { text-decoration: underline#{$important}; }
+		&:hover,
+		&:active,
+		&:focus {
+			text-decoration: none#{$important};
+		}
+	}
+	// どの状態でも下線あり
+	@else if $type == line {
+		&:link,
+		&:visited,
+		&:hover,
+		&:active,
+		&:focus {
+			text-decoration: underline#{$important};
+		}
+	}
+	// :link,:visitedは下線なし、それ以外はあり
+	@else if $type == none-to-line {
+		&:link,
+		&:visited {
+			text-decoration: none#{$important};
+		}
+		&:hover,
+		&:active,
+		&:focus {
+			text-decoration: underline#{$important};
+		}
+	}
+	// どの状態でも下線なし
+	@else if $type == none {
+		&:link,
+		&:visited,
+		&:hover,
+		&:active,
+		&:focus {
+			text-decoration: none#{$important};
+		}
+	}
+}

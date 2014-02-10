@@ -1,0 +1,61 @@
+// @mixin min-screen
+// @description min-width - 
+// @param $min-width {Number} 数値
+
+@mixin min-screen($min-width) {
+	@media screen and ( min-width: $min-width ) {
+		@content;
+	}
+}
+
+// @mixin max-screen
+// @description - max-width
+// @param $max-width {Number} 数値
+
+@mixin max-screen($max-width) {
+	@media screen and ( max-width: $max-width ) {
+		@content;
+	}
+}
+
+// @mixin screen
+// @description $min-width - $max-width
+// @param $min-width {Number} 数値
+// @param $max-width {Number} 数値
+
+@mixin screen($min-width, $max-width) {
+	@media screen and ( min-width: $min-width ) and ( max-width: $max-width ) {
+		@content;
+	}
+};
+
+// @mixin min-screen-h
+// @description min-height - 
+// @param $min-height {Number} 数値
+
+@mixin min-sreen-h($min-height) {
+	@media screen and ( min-height: $min-height ) {
+		@content;
+	}
+};
+
+// @mixin max-screen-h
+// @description - max-height
+// @param $max-height {Number} 数値
+
+@mixin max-screen-h($max-height) {
+	@media screen and ( max-height: $max-height ) {
+		@content;
+	}
+};
+
+// @mixin screen-h
+// @description $min-height - $max-height
+// @param $min-height {Number} 数値
+// @param $max-height {Number} 数値
+
+@mixin screen-h($min-height, $max-height) {
+	@media screen and ( min-height: $min-height ) and ( max-height: $max-height ) {
+		@content;
+	}
+};

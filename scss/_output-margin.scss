@@ -1,0 +1,46 @@
+// @mixin output-margin
+// @description マージン調整用classの生成
+// spacing.scssよりもあとに読み込む必要があります
+
+@mixin output-margin {
+
+	// margin-top
+	@for $i from 0 through 20 {
+		@include spacing(margin, top, $i);
+	}
+	$i: 30;
+	@while $i <= 50 {
+		@include spacing(margin, top, $i);
+		$i: $i + 10;
+	}
+
+	// margin-bottom
+	@for $i from 0 through 20 {
+		@include spacing(margin, bottom, $i);
+	}
+	$i: 30;
+	@while $i <= 50 {
+		@include spacing(margin, bottom, $i);
+		$i: $i + 10;
+	}
+
+	// Negative margin-top
+	@for $i from 1 through 20 {
+		@include spacing(margin, top, -$i);
+	}
+	$i: 30;
+	@while $i <= 50 {
+		@include spacing(margin, top, -$i);
+		$i: $i + 10;
+	}
+
+	// Negative margin-bottom
+	@for $i from 1 through 20 {
+		@include spacing(margin, bottom, -$i);
+	}
+	$i: 30;
+	@while $i <= 50 {
+		@include spacing(margin, bottom, -$i);
+		$i: $i + 10;
+	}
+}
