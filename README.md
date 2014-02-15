@@ -190,3 +190,9 @@ a:hover, a:active, a:focus {
 ## LICENSE
 
 SCSSファイルにライセンス条項が明記されていない限りすべてパブリック・ドメインとして提供されています。
+
+## 参考
+
+Mixinをつくるにあたって参考にさせていただきました。ありがとうございます。
+
+- <a href="http://www.slideshare.net/kosei27/sass-14212276" >実践Sass 後編</a>
